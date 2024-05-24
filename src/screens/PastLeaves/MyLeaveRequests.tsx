@@ -18,38 +18,51 @@ interface LeaveRequest {
 function MyLeaveRequests(): React.JSX.Element {
   const [leaveRequests, setLeaveRequests] = useState<LeaveRequest[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const getLeaveRequest = async () => {
     try {
       const accessToken = await getAccessToken();
-      console.log("ACCESS TOKEN RECIEVED: ", accessToken);
+      console.log("ACCESS TOKEN RECEIVED from past leave: ", accessToken);
       if (!accessToken) {
-        console.log("Error In recieving Access Token");
-        setError("Error in Recieving Access Token of the user. Please try again after sometime.");
-      }
-      else {
-        const response = await fetch(past_leave_status,
-          {
+        console.log("Error In receiving Access Token");
+        setError("Error in Receiving Access Token of the user. Please try again after sometime.");
+        setLoading(false);
+      } else {
+        console.log("Received Cookie Successful for Leave");
+        try {
+          const response = await fetch(past_leave_status, {
             method: "GET",
-            headers: { 'Cookie': `access_token_ims_app=${accessToken}`}
+            headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
+          });
+          console.log("RESPONSE FROM GET PAST LEAVE: ", response);
+          if (!response.ok) {
+            console.log("Cookie received success, Error in Fetching Past Leave Requests.");
+            setError("Cookie received success, Error in Fetching Past Leave Requests.");
+            throw new Error("Failed to fetch data");
           }
-        );
-        const responseData = await response.json();
-        if (!response.ok) {
-          console.log("Cookie recieved success, Error in Fetching Past Leave Requests.");
-          setError("Cookie recieved success, Error in Fetching Past Leave Requests.");
-          throw new Error("Failed to fetch data");
+          const responseData = await response.json();
+          try {
+            if (responseData && responseData.Applications) {
+              const applications: LeaveRequest[] = Object.values(
+                responseData.Applications
+              );
+              setLeaveRequests(applications);
+            }
+          } catch (innerError) {
+            console.error("Error processing inner response data:", innerError);
+            setError("Error processing inner response data.");
+          }
+        } catch (fetchError) {
+          console.error("Internal server Error:", fetchError);
+          setError("Internal Server Error in fetching Past Leave Requests." + fetchError);
         }
-        if (responseData && responseData.Applications) {
-          const applications: LeaveRequest[] = Object.values(
-            responseData.Applications
-          );
-          setLeaveRequests(applications);
-        }
+        setLoading(false);
       }
     } catch (e) {
-      setError("Error in recieving cookies, please try again later.");
-      console.log("Error in recieving Cookies");
+      setLoading(false);
+      setError("Error in Receiving Cookies, Please try again after sometime.");
+      console.log("Error in receiving Cookies");
     }
   };
 
@@ -60,18 +73,19 @@ function MyLeaveRequests(): React.JSX.Element {
   return (
     <SafeAreaView>
       <ScrollView>
-        {error ? (
+        {loading && (
           <Text
             style={{
               marginVertical: 10,
               fontSize: 20,
-              color: "red",
+              color: "black",
               marginLeft: 50
             }}
           >
-            {error}
+            Getting Details, Please Wait...
           </Text>
-        ) : (
+        )}
+        {!error && !loading && (
           <>
             <Text
               style={{
@@ -96,6 +110,19 @@ function MyLeaveRequests(): React.JSX.Element {
               </Card>
             ))}
           </>
+        )}
+
+        {error && (
+          <Text
+            style={{
+              marginVertical: 10,
+              fontSize: 20,
+              color: "red",
+              marginLeft: 50
+            }}
+          >
+            {error}
+          </Text>
         )}
         <View style={{ margin: 20 }}></View>
       </ScrollView>

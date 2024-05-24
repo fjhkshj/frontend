@@ -16,7 +16,7 @@ function Credentials({ onChangeEmail, onChangePassword }) {
             fontWeight: "bold"
           }}
         >
-          Email:
+          Email
         </Text>
       </View>
       <TextInput
@@ -35,7 +35,7 @@ function Credentials({ onChangeEmail, onChangePassword }) {
             fontWeight: "bold"
           }}
         >
-          Password:
+          Password
         </Text>
       </View>
       <TextInput

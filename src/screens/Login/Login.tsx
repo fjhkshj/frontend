@@ -35,8 +35,9 @@ function Login({
       const auth_status = await authenticate_user(Email, _Password, setErrorText, setIsLoading);
       if (auth_status === true) {
         // After Successful Authentication, Get User Details
+        setIsLoading(true);
         try {
-          setErrorText("Getting User Details..");
+          setErrorText("Authentication Success, Getting User Details..");
           console.log("Getting User Details...");
           const user_details_status = await get_user_details();
           if (user_details_status == true) {
