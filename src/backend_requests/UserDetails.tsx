@@ -1,6 +1,4 @@
 import { UserTypes } from "../custom-types";
-import CookieManager from "@react-native-cookies/cookies";
-import { domain } from "../constants/APIHandler";
 import { user_details } from "../constants/APIHandler";
 import { getAccessToken } from "./AccessToken";
 

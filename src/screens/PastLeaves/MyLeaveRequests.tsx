@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, SafeAreaView, Text, ScrollView } from "react-native";
 import { Card } from "@rneui/themed";
-import { rollno } from "../../backend_requests/UserDetails";
 import { past_leave_status } from "../../constants/APIHandler";
 import { getAccessToken } from "../../backend_requests/AccessToken";
 
@@ -20,32 +19,42 @@ function MyLeaveRequests(): React.JSX.Element {
   const [leaveRequests, setLeaveRequests] = useState<LeaveRequest[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  const checkLeaveRequest = async () => {
+  const getLeaveRequest = async () => {
     try {
       const accessToken = await getAccessToken();
-      const response = await fetch(past_leave_status,
-        {
-            method: "GET",
-            headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
-        }
-    );
-      const responseData = await response.json();
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
+      console.log("ACCESS TOKEN RECIEVED: ", accessToken);
+      if (!accessToken) {
+        console.log("Error In recieving Access Token");
+        setError("Error in Recieving Access Token of the user. Please try again after sometime.");
       }
-      if (responseData && responseData.Applications) {
-        const applications: LeaveRequest[] = Object.values(
-          responseData.Applications
+      else {
+        const response = await fetch(past_leave_status,
+          {
+            method: "GET",
+            headers: { 'Cookie': `access_token_ims_app=${accessToken}`}
+          }
         );
-        setLeaveRequests(applications);
+        const responseData = await response.json();
+        if (!response.ok) {
+          console.log("Cookie recieved success, Error in Fetching Past Leave Requests.");
+          setError("Cookie recieved success, Error in Fetching Past Leave Requests.");
+          throw new Error("Failed to fetch data");
+        }
+        if (responseData && responseData.Applications) {
+          const applications: LeaveRequest[] = Object.values(
+            responseData.Applications
+          );
+          setLeaveRequests(applications);
+        }
       }
     } catch (e) {
-      setError("Error while fetching the data, please try again later.");
+      setError("Error in recieving cookies, please try again later.");
+      console.log("Error in recieving Cookies");
     }
   };
 
   useEffect(() => {
-    checkLeaveRequest();
+    getLeaveRequest();
   }, []);
 
   return (

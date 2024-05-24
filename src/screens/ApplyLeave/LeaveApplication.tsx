@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import { SafeAreaView, ScrollView, View, Alert } from "react-native";
 import { Button } from "@rneui/base";
 import { useNavigation } from "@react-navigation/native";
-import notifee from "@notifee/react-native";
 import FromToDate from "./components/FromToDate";
 import DocumentAdd from "./components/DocumentUpload";
 import Remarks from "./components/Remarks";
 import ReasonForLeave from "./components/ReasonForLeave";
 import MissedExams from "./components/MissedExams";
 import { useEffect } from "react";
-import { userMail } from "../../backend_requests/UserDetails";
 import { rollno } from "../../backend_requests/UserDetails";
 import { apply_leave } from "../../constants/APIHandler";
 import { getAccessToken } from "../../backend_requests/AccessToken";
+import { onDisplayNotification } from "../../components/SendNotification";
 
 function LeaveApplication(): React.JSX.Element {
   const navigation = useNavigation();
@@ -36,30 +35,7 @@ function LeaveApplication(): React.JSX.Element {
   const [missedexams, setmissedexams] = useState(null);
   const [listOfCoursesMissed, setLISTOFCOURSESMISSED] = useState([]);
 
-  async function onDisplayNotification(message: string) {
-    // Request permissions (required for iOS)
-    await notifee.requestPermission();
-
-    // Create a channel (required for Android)
-    const channelId = await notifee.createChannel({
-      id: "default",
-      name: "Default Channel"
-    });
-
-    // Display a notification
-    await notifee.displayNotification({
-      title: message,
-      body: "Click for more details",
-      android: {
-        channelId,
-        // smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
-        // pressAction is needed if you want the notification to open the app when pressed
-        pressAction: {
-          id: "default"
-        }
-      }
-    });
-  }
+  
 
   const sendDataToServer = async (json_to_send) => {
     try {
