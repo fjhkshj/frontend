@@ -9,9 +9,7 @@ import ReasonForLeave from "./components/ReasonForLeave";
 import MissedExams from "./components/MissedExams";
 import { useEffect } from "react";
 import { rollno } from "../../backend_requests/UserDetails";
-import { apply_leave } from "../../constants/APIHandler";
-import { getAccessToken } from "../../backend_requests/AccessToken";
-import { onDisplayNotification } from "../../components/SendNotification";
+import { postLeaveToServer } from "../../backend_requests/PostLeave";
 
 function LeaveApplication(): React.JSX.Element {
   const navigation = useNavigation();
@@ -35,28 +33,9 @@ function LeaveApplication(): React.JSX.Element {
   const [missedexams, setmissedexams] = useState(null);
   const [listOfCoursesMissed, setLISTOFCOURSESMISSED] = useState([]);
 
-  
 
-  const sendDataToServer = async (json_to_send) => {
-    try {
-      const accessToken = await getAccessToken();
-      const _response = await fetch(apply_leave, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          'Content-Type': "application/json", 
-          'Cookie': `access_token_ims_app=${accessToken}`
-        },
-        body: JSON.stringify(json_to_send)
-      });
-      onDisplayNotification("Your Leave Request Applied successfully.");
-      navigation.navigate("MyLeaves");
-    } catch (error) {
-      onDisplayNotification(
-        "Error during sending your leave request, please try again sometime later."
-      );
-    }
-  };
+
+
 
   useEffect(() => {
     if (reasonforleave === "Sickness") {
@@ -172,9 +151,19 @@ function LeaveApplication(): React.JSX.Element {
               attachment2: file2_base64
             };
 
-            sendDataToServer(json_to_send);
-
-            Alert.alert("Alert", "Submitted Successfully");
+            postLeaveToServer(json_to_send)
+            .then(status_of_request => {
+              if (status_of_request) {
+                Alert.alert("Alert", "Submitted Successfully");
+                navigation.navigate("MyLeaves");;
+              } else {
+                Alert.alert("Error in sending the Request");
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              Alert.alert("Error in sending the Request.");
+            });
           }
         },
 

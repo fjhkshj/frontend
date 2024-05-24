@@ -1,4 +1,3 @@
-
 import CookieManager from "@react-native-cookies/cookies";
 import { domain } from "../constants/APIHandler";
 
