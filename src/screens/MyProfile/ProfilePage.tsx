@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Alert, SafeAreaView, Text, ScrollView } from "react-native";
 import global from "../../styles/global";
 import profile from "../../styles/profile";
@@ -72,24 +72,33 @@ function ProfileDetails(): React.JSX.Element {
 
   const fetchProfileDetails = async () => {
     const accessToken = await getAccessToken();
-    await fetch(profile_details,
-      {
+    if (accessToken) {
+      await fetch(profile_details, {
         method: "GET",
         headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
-      }
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setIsFetchFine(true);
-        setDetails(JSON.parse(JSON.stringify(json))); // why did this work?
       })
-      .catch((error) => {
-        setIsFetchFine(false);
-        Alert.alert("Alert", "ProfileDetails: ", error.toString());
-      });
+        .then((response) => {
+          console.log('Response:', response);
+          return response.json();
+        })
+        .then((json) => {
+          console.log('Parsed JSON:', json);
+          setIsFetchFine(true);
+          setDetails(JSON.parse(JSON.stringify(json))); // why did this work?
+        })
+        .catch((error) => {
+          console.error('Fetch Error:', error);
+          setIsFetchFine(false);
+          Alert.alert("Alert", "ProfileDetails: ", error.toString());
+        });
+    }
+    else {
+      console.log("Error in Receiving access Token.");
+    }
+
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchProfileDetails();
   }, []);
 

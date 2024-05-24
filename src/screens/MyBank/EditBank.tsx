@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   SafeAreaView,
   Text,
@@ -87,7 +87,7 @@ function EditBankDetails(): React.JSX.Element {
 
   const fields = Object.keys(detailsObj);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const readFile = async () => {
       try {
         const base64_content = await RNFS.readFile(pdfURI, "base64");

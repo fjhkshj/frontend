@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   SafeAreaView,
   Text,
@@ -61,24 +61,31 @@ function BankDetails({
 
   const fetchBankDetails = async () => {
     const accessToken = await getAccessToken();
-    fetch(bank_details,
-      {
+    if (accessToken) {
+      await fetch(bank_details, {
         method: "GET",
         headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
-      }
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setIsFetchFine(true);
-        setDetails(JSON.parse(JSON.stringify(json))); // why did this work?
       })
-      .catch((error) => {
-        setIsFetchFine(false);
-        Alert.alert("GPAData:", error.toString());
-      });
+        .then((response) => {
+          console.log('Response:', response);
+        })
+        .then((json) => {
+          console.log('Parsed JSON:', json);
+          setIsFetchFine(true);
+          setDetails(JSON.parse(JSON.stringify(json))); // why did this work?
+        })
+        .catch((error) => {
+          console.error('Fetch Error:', error);
+          setIsFetchFine(false);
+          Alert.alert("GPAData:", error.toString());
+        });
+    }
+    else {
+      console.log("Error in Fetching Cookie of the user");
+    }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchBankDetails();
   }, []);
 
