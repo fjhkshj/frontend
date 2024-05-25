@@ -1,4 +1,4 @@
-const domain = "http://192.168.190.101";
+const domain = "https://ims-app.iiit.ac.in";
 
 const auth_route = domain + "/user/login";
 
