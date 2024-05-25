@@ -1,4 +1,4 @@
-const domain = "https://ims-app.iiit.ac.in";
+const domain = "http://192.168.190.101";
 
 const auth_route = domain + "/user/login";
 
@@ -10,7 +10,7 @@ const bank_details = domain + "/data/bank_details";
 
 const update_bank_details = domain + "/data/update_bank_details";
 
-const transcript_details = domain + "/data/transcript_details";
+const transcript_details = domain + "/data/transcript";
 
 const courses_details = domain + "/data/courses";
 
