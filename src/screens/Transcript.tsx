@@ -10,9 +10,8 @@ import {
 } from "react-native";
 import { Button } from "@rneui/base";
 import SemesterSelector from "../components/SemesterSelector";
-import { getTranscriptAPI } from "../constants/APIHandler";
-
-import { userMail } from "../backend_requests/UserDetails";
+import { transcript_details } from "../constants/APIHandler";
+import { getAccessToken } from "../backend_requests/AccessToken";
 import { selected_year, selected_sem } from "../components/SemesterSelector";
 
 import {
@@ -95,18 +94,34 @@ function Transcript(): React.JSX.Element {
   const [semesterData, setSemesterData] = useState({} as SemesterData);
   const [gpaData, setGpaData] = useState({} as GPAJSON);
   const [record, setRecord] = useState(false);
+  const [loadingText, setLoadingText] = useState("Choose Year and Semester");
 
   const fetchGpa = async () => {
     try {
-      const url = getTranscriptAPI(userMail);
-      const response = await fetch(url);
+      const url = transcript_details;
+      const accessToken = getAccessToken();
+      console.log("ACCESS TOKEN FOR TRANSCRIPT: ", accessToken);
+      const response = await fetch(url,
+        {
+          method: "GET",
+          headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
+        }
+      );
+      console.log("RESPONSE: ", response);
       if (!response.ok) {
-        throw new Error("Failed to fetch GPA data");
+        console.log("Error in fetching transcript details, please try again later.");
+        setLoadingText("Error in Fetching Transcript, Please try again later");
       }
-      const responseData = await response.json();
-      setGpaData(responseData.semesters);
+      else {
+        console.log("RESPONSE: ", response);
+        const responseData = await response.json();
+        console.log("RESPONSE JSON From BackEnd: ", responseData);
+        setGpaData(responseData.semesters);
+      }
+
     } catch (e: unknown) {
-      Alert.alert("GPAData:", e as string);
+      setLoadingText("Error in Fetching Transcript, Please try again later");
+      // Alert.alert("GPAData:", e as string);
     }
   };
 
@@ -317,7 +332,9 @@ function Transcript(): React.JSX.Element {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      
       <Selector />
+      <Text style={{ fontSize: 20, textAlign: 'center', color: 'black'}}>{loadingText}</Text>
       {Object.entries(semesterData).map(
         ([semester, { year, courses, CGPA, SGPA }], index) => (
           <View key={index}>

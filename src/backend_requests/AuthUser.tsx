@@ -51,7 +51,7 @@ export const authenticate_user = async (Email: string, _Password: string, setErr
             setErrorText("Auth Success, Getting Cookies....");
             const cookie_status = await getCookie(response, uri_for_auth);
             if (cookie_status == false) {
-                setErrorText("Auth Success, Cookie assign failed");
+                setErrorText("Auth Success, Cookie assign failed, Please Click Login again");
                 return false;
             }
             setErrorText("Auth, Cookie Assign Success.");
@@ -67,7 +67,7 @@ export const authenticate_user = async (Email: string, _Password: string, setErr
     }
     catch (error) {
         setIsError(false);
-        setErrorText("Error while sending POST request to Authentication API")
+        setErrorText("Please check your Network or VPN connection")
         console.log("Failed in Authentication Network request failed ", error);
         return false;
     }
