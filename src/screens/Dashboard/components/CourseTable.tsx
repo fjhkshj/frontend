@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Alert, View } from "react-native";
-import { rollno } from "../../Login/Login";
-import { getCoursesAPI } from "../../../constants/APIHandler";
+import { courses_details } from "../../../constants/APIHandler";
+import { getAccessToken } from "../../../backend_requests/AccessToken";
 
 // define interface for typescript
 export interface Course {
@@ -35,6 +35,8 @@ function CourseTable(): React.JSX.Element {
   const [courseRows, setCourseRows] = React.useState<CourseRow[]>([]);
 
   const filterPresentCourses = () => {
+    // console.log("Checking Here: ");
+
     const Rowslist: CourseRow[] = [];
     if (detailsState == undefined) {
       return;
@@ -57,20 +59,40 @@ function CourseTable(): React.JSX.Element {
           reject(new Error("Request timed out"));
         }, 10000);
       });
-      const responsePromise = fetch(getCoursesAPI(rollno));
-      const response = await Promise.race([responsePromise, timeoutPromise]);
-      const json = await (response as Response).json();
-      setDetails(JSON.parse(JSON.stringify(json)));
-      filterPresentCourses();
+
+
+      const accessToken = await getAccessToken();
+      if (accessToken) {
+        console.log("Cookies Fetched Success.");
+        const responsePromise = fetch(courses_details, {
+          method: "GET",
+          headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
+        });
+        const response = await Promise.race([responsePromise, timeoutPromise]);
+        console.log("RESPONSE: ", response);
+        const json = await (response as Response).json();
+        console.log("JSON FORMAT: ",    json);
+        setDetails(JSON.parse(JSON.stringify(json)));
+
+        // Here function is not calling, Need to fix this.
+        filterPresentCourses();
+
+      } else {
+        console.log("Error in Receiving Cookies.");
+
+      }
+
     } catch (error) {
-      Alert.alert("Network Error: Couldn't fetch courses");
+      // Alert.alert("Network Error: Couldn't fetch courses");
+      console.log("Could not fetch Courses data in the Dashboard");
     }
   };
 
   useEffect(() => {
     fetchCourseDetails();
-  }, [detailsState]);
+  }, []);
 
+  
   // just to trigger useEffect
   return <View />;
 }
