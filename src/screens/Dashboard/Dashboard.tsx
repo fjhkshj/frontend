@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
 
   parent_title: {
     fontSize: 24,
-    marginLeft: 10
+    marginLeft: 10,
+    color: "#000000" // TODO: use theme wise color
   },
 
   children_section: {
