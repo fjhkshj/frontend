@@ -127,6 +127,7 @@ function LeaveApplication(): React.JSX.Element {
       return Alert.alert("Alert", "Are you sure you want to Submit?", [
         {
           text: "Yes",
+           // Hello world base 64 code for attachment 1, but not selected file, Selected file base64 code is giving error we need to fix this. 
           onPress: () => {
             const json_to_send = {
               rollNumber: rollno,
@@ -147,7 +148,7 @@ function LeaveApplication(): React.JSX.Element {
               semesterCourses: listOfCoursesMissed,
               remarks: remarks,
               applicationDate: todayDate,
-              attachment1: file1_base64,
+              attachment1: "SGVsbG8sIFdvcmxkIQ==",
               attachment2: file2_base64
             };
 

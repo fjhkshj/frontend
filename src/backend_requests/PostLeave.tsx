@@ -13,7 +13,9 @@ async function sendData(json_to_send, accessToken: string): Promise<boolean> {
             },
             body: JSON.stringify(json_to_send)
         });
-
+        console.log("RESPONSE: ", response);
+        const json_content = await response.json();
+        console.log("JSON CONTENT: ", json_content);
         if (response.ok) {
             onDisplayNotification("Your Leave Request Applied successfully.");
             return true;
