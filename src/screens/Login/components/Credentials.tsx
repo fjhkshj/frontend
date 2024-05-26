@@ -10,7 +10,7 @@ function Credentials({ onChangeEmail, onChangePassword }) {
         <Text
           style={{
             fontSize: 20,
-            color: "#000000",
+            color: "#000000", // TODO: replace with theme wise color
             marginLeft: 15,
             marginBottom: -9,
             fontWeight: "bold"
@@ -20,8 +20,9 @@ function Credentials({ onChangeEmail, onChangePassword }) {
         </Text>
       </View>
       <TextInput
-        style={global.input}
+        style={{...global.input, color: "#000000"}} // TODO: replace with theme wise color
         placeholder="Enter your Email"
+        placeholderTextColor={"grey"} // TODO: replace with theme wise color
         onChangeText={onChangeEmail}
         inputMode="text"
       />
@@ -29,7 +30,7 @@ function Credentials({ onChangeEmail, onChangePassword }) {
         <Text
           style={{
             fontSize: 20,
-            color: "#000000",
+            color: "#000000", // TODO: replace with theme wise color
             marginLeft: 15,
             marginBottom: -9,
             fontWeight: "bold"
@@ -39,8 +40,9 @@ function Credentials({ onChangeEmail, onChangePassword }) {
         </Text>
       </View>
       <TextInput
-        style={global.input}
+        style={{...global.input, color: "#000000"}} // TODO: replace with theme wise color
         placeholder="Enter your password"
+        placeholderTextColor={"grey"} // TODO: replace with theme wise color
         onChangeText={onChangePassword}
         secureTextEntry={true}
         inputMode="text"
