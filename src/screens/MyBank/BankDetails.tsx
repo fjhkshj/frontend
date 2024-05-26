@@ -60,28 +60,31 @@ function BankDetails({
   const [isFetchFine, setIsFetchFine] = React.useState(true);
 
   const fetchBankDetails = async () => {
-    const accessToken = await getAccessToken();
-    if (accessToken) {
-      await fetch(bank_details, {
+    try {
+      const accessToken = await getAccessToken();
+      if (!accessToken) {
+        console.log("Error in Fetching Cookie of the user");
+
+        return;
+      }
+      
+      const response = await fetch(bank_details, {
         method: "GET",
         headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
-      })
-        .then((response) => {
-          console.log('Response:', response);
-        })
-        .then((json) => {
-          console.log('Parsed JSON:', json);
-          setIsFetchFine(true);
-          setDetails(JSON.parse(JSON.stringify(json))); // why did this work?
-        })
-        .catch((error) => {
-          console.error('Fetch Error:', error);
-          setIsFetchFine(false);
-          Alert.alert("GPAData:", error.toString());
-        });
-    }
-    else {
-      console.log("Error in Fetching Cookie of the user");
+      });
+      
+      console.log('Response:', response);
+      
+      const json_response = await response.json();
+      
+      console.log("RESPONSE JSON: ", json_response);
+      
+      setIsFetchFine(true);
+      setDetails(JSON.parse(JSON.stringify(json_response))); // Optional: Deep copy if needed
+    } catch (error) {
+      console.error('Fetch Error:', error);
+      setIsFetchFine(false);
+      Alert.alert("Error:", error.toString());
     }
   };
 
