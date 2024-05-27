@@ -56,7 +56,7 @@ function Remarks({ leavejustification, leaveremarks }): React.JSX.Element {
             {todayDate.toLocaleDateString("en-IN", {
               year: "numeric",
               month: "2-digit",
-              day: "2-digit"
+              day: "2-digit",
             })}
           </Text>
         </View>

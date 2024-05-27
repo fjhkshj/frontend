@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   SafeAreaView,
   Text,
@@ -6,7 +6,7 @@ import {
   ScrollView,
   Alert,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 import { Card, Button } from "@rneui/base";
 import { SelectList } from "react-native-dropdown-select-list";
@@ -44,7 +44,7 @@ const bankDetailsJSON = {
   ifscCode: null,
   bankAddress: null,
   remarks: null,
-  base64Data: null
+  base64Data: null,
 };
 
 const fieldNames: { [key: string]: string } = {
@@ -58,14 +58,14 @@ const fieldNames: { [key: string]: string } = {
   bankAddress: "Bank Address",
   remarks: "Remarks",
   passbookOrCanceledCheque: "Passbook / Canceled Cheque Leaf",
-  base64Data: "Passbook / Canceled Cheque Leaf"
+  base64Data: "Passbook / Canceled Cheque Leaf",
 };
 
 const mandatoryFields = [
   "selectBank",
   "accountHolderName",
   "accountNumber",
-  "passbookOrCanceledCheque"
+  "passbookOrCanceledCheque",
 ];
 
 let fieldsToNotShow: Array<string> = [];
@@ -116,7 +116,7 @@ function EditBankDetails(): React.JSX.Element {
     // Create a channel (required for Android)
     const channelId = await notifee.createChannel({
       id: "default",
-      name: "Default Channel"
+      name: "Default Channel",
     });
 
     // Display a notification
@@ -128,9 +128,9 @@ function EditBankDetails(): React.JSX.Element {
         // smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
         // pressAction is needed if you want the notification to open the app when pressed
         pressAction: {
-          id: "default"
-        }
-      }
+          id: "default",
+        },
+      },
     });
   }
 
@@ -153,23 +153,23 @@ function EditBankDetails(): React.JSX.Element {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          'Cookie': `access_token_ims_app=${accessToken}`
+          Cookie: `access_token_ims_app=${accessToken}`,
         },
-        body: JSON.stringify(details)
+        body: JSON.stringify(details),
       })
         .then((response) => response)
         .then((_json) => {
           // console.log("response: ", _json);
           Alert.alert("Submitted bank details.");
           onDisplayNotification(
-            "Your application for bank details has been sent successfully."
+            "Your application for bank details has been sent successfully.",
           );
         })
         .catch((error) => {
           // console.log("Error during Bank Details POST API: ", error);
           Alert.alert("An error occured while submitting.", error.toString());
           onDisplayNotification(
-            "Your application for bank details was not sent successfully. Please try again later."
+            "Your application for bank details was not sent successfully. Please try again later.",
           );
         });
     }
@@ -238,14 +238,14 @@ function EditBankDetails(): React.JSX.Element {
   const selectDocument = async () => {
     try {
       const doc = await DocumentPicker.pickSingle({
-        type: DocumentPicker.types.pdf
+        type: DocumentPicker.types.pdf,
       });
 
       // Check if the selected file is within the 1 MB limit
       if (doc.size != null && doc.size > 1 * 1024 * 1024) {
         Alert.alert(
           "File Size Limit Exceeded",
-          "Please select a file up to 1 MB."
+          "Please select a file up to 1 MB.",
         );
       } else {
         setPDFName(doc.name ? doc.name : ""); // triggers useEffect hook

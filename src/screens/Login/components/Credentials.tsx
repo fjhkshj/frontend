@@ -13,14 +13,14 @@ function Credentials({ onChangeEmail, onChangePassword }) {
             color: "#000000", // TODO: replace with theme wise color
             marginLeft: 15,
             marginBottom: -9,
-            fontWeight: "bold"
+            fontWeight: "bold",
           }}
         >
           Email
         </Text>
       </View>
       <TextInput
-        style={{...global.input, color: "#000000"}} // TODO: replace with theme wise color
+        style={{ ...global.input, color: "#000000" }} // TODO: replace with theme wise color
         placeholder="Enter your Email"
         placeholderTextColor={"grey"} // TODO: replace with theme wise color
         onChangeText={onChangeEmail}
@@ -33,14 +33,14 @@ function Credentials({ onChangeEmail, onChangePassword }) {
             color: "#000000", // TODO: replace with theme wise color
             marginLeft: 15,
             marginBottom: -9,
-            fontWeight: "bold"
+            fontWeight: "bold",
           }}
         >
           Password
         </Text>
       </View>
       <TextInput
-        style={{...global.input, color: "#000000"}} // TODO: replace with theme wise color
+        style={{ ...global.input, color: "#000000" }} // TODO: replace with theme wise color
         placeholder="Enter your password"
         placeholderTextColor={"grey"} // TODO: replace with theme wise color
         onChangeText={onChangePassword}

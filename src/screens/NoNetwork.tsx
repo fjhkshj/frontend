@@ -14,7 +14,7 @@ function NoNetwork(): React.JSX.Element {
           marginHorizontal: 70,
           fontSize: 20,
           color: "black",
-          marginTop: 100
+          marginTop: 100,
         }}
       >
         You are not connected to Internet. Please Check your internet connection

@@ -26,26 +26,32 @@ function MyLeaveRequests(): React.JSX.Element {
       console.log("ACCESS TOKEN RECEIVED from past leave: ", accessToken);
       if (!accessToken) {
         console.log("Error In receiving Access Token");
-        setError("Error in Receiving Access Token of the user. Please try again after sometime.");
+        setError(
+          "Error in Receiving Access Token of the user. Please try again after sometime.",
+        );
         setLoading(false);
       } else {
         console.log("Received Cookie Successful for Leave");
         try {
           const response = await fetch(past_leave_status, {
             method: "GET",
-            headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
+            headers: { Cookie: `access_token_ims_app=${accessToken}` },
           });
           console.log("RESPONSE FROM GET PAST LEAVE: ", response);
           if (!response.ok) {
-            console.log("Cookie received success, Error in Fetching Past Leave Requests.");
-            setError("Cookie received success, Error in Fetching Past Leave Requests.");
+            console.log(
+              "Cookie received success, Error in Fetching Past Leave Requests.",
+            );
+            setError(
+              "Cookie received success, Error in Fetching Past Leave Requests.",
+            );
             throw new Error("Failed to fetch data");
           }
           const responseData = await response.json();
           try {
             if (responseData && responseData.Applications) {
               const applications: LeaveRequest[] = Object.values(
-                responseData.Applications
+                responseData.Applications,
               );
               setLeaveRequests(applications);
             }
@@ -55,7 +61,10 @@ function MyLeaveRequests(): React.JSX.Element {
           }
         } catch (fetchError) {
           console.error("Internal server Error:", fetchError);
-          setError("Internal Server Error in fetching Past Leave Requests." + fetchError);
+          setError(
+            "Internal Server Error in fetching Past Leave Requests." +
+              fetchError,
+          );
         }
         setLoading(false);
       }
@@ -79,7 +88,7 @@ function MyLeaveRequests(): React.JSX.Element {
               marginVertical: 10,
               fontSize: 20,
               color: "black",
-              marginLeft: 50
+              marginLeft: 50,
             }}
           >
             Getting Details, Please Wait...
@@ -92,7 +101,7 @@ function MyLeaveRequests(): React.JSX.Element {
                 marginVertical: 10,
                 fontSize: 20,
                 color: "black",
-                marginLeft: 50
+                marginLeft: 50,
               }}
             >
               Total Number of Applications: {leaveRequests.length}
@@ -118,7 +127,7 @@ function MyLeaveRequests(): React.JSX.Element {
               marginVertical: 10,
               fontSize: 20,
               color: "red",
-              marginLeft: 50
+              marginLeft: 50,
             }}
           >
             {error}

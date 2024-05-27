@@ -30,14 +30,14 @@ export const entries = {
       Profile: {
         icon: generalIcon,
         target: "ProfileDetails",
-        access: [UserTypes.Student, UserTypes.Faculty, UserTypes.Staff]
+        access: [UserTypes.Student, UserTypes.Faculty, UserTypes.Staff],
       },
       "Bank Details": {
         icon: bankIcon,
         target: "BankDetails",
-        access: [UserTypes.Student, UserTypes.Faculty, UserTypes.Staff]
-      }
-    }
+        access: [UserTypes.Student, UserTypes.Faculty, UserTypes.Staff],
+      },
+    },
   },
   Features: {
     icon: featureIcon,
@@ -45,23 +45,23 @@ export const entries = {
       "Request Leave": {
         icon: leaveIcon,
         target: "LeaveApplicationScreen",
-        access: [UserTypes.Student]
+        access: [UserTypes.Student],
       },
       "Leave Status": {
         icon: statusIcon,
         target: "MyLeaves",
-        access: [UserTypes.Student]
+        access: [UserTypes.Student],
       },
       Attendance: {
         icon: attendanceIcon,
         target: "MyAttendance",
-        access: [UserTypes.Student]
+        access: [UserTypes.Student],
       },
       Transcript: {
         icon: transcriptIcon,
         target: "MyTranscript",
-        access: [UserTypes.Student]
-      }
-    }
-  }
+        access: [UserTypes.Student],
+      },
+    },
+  },
 };

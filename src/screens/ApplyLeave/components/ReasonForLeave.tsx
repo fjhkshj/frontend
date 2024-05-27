@@ -14,7 +14,7 @@ function ReasonForLeave({
   doctorscategory,
   eventscategory,
   presentation,
-  URL
+  URL,
 }): React.JSX.Element {
   const [reasonForLeave, setReasonForLeave] = useState("");
   const [EventCategory, setEventCategory] = useState("");
@@ -25,30 +25,30 @@ function ReasonForLeave({
     { key: "Technical Event", value: "Technical Event" },
     { key: "Sports Event", value: "Sports Event" },
     { key: "Cultural Event", value: "Cultural Event" },
-    { key: "Any Other", value: "Any Other" }
+    { key: "Any Other", value: "Any Other" },
   ];
 
   const PatientCategories = [
     { key: "Select...", value: "Select..." },
     { key: "In Patient", value: "In Patient" },
-    { key: "Out Patient", value: "Out Patient" }
+    { key: "Out Patient", value: "Out Patient" },
   ];
 
   const DoctorCategories = [
     { key: "Select...", value: "Select..." },
     { key: "Institute Doctor", value: "Institute Doctor" },
-    { key: "Outside Doctor", value: "Outside Doctor" }
+    { key: "Outside Doctor", value: "Outside Doctor" },
   ];
 
   const EventCategories = [
     { key: "Select...", value: "Select..." },
     { key: "Conference", value: "Conference" },
-    { key: "Workshop", value: "Workshop" }
+    { key: "Workshop", value: "Workshop" },
   ];
   const Presentations = [
     { key: "Select...", value: "Select..." },
     { key: "Yes", value: "Yes" },
-    { key: "No", value: "No" }
+    { key: "No", value: "No" },
   ];
   const handleurlChange = (text: string) => {
     URL(text);

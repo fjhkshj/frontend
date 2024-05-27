@@ -60,28 +60,24 @@ function CourseTable(): React.JSX.Element {
         }, 10000);
       });
 
-
       const accessToken = await getAccessToken();
       if (accessToken) {
         console.log("Cookies Fetched Success.");
         const responsePromise = fetch(courses_details, {
           method: "GET",
-          headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
+          headers: { Cookie: `access_token_ims_app=${accessToken}` },
         });
         const response = await Promise.race([responsePromise, timeoutPromise]);
         console.log("RESPONSE: ", response);
         const json = await (response as Response).json();
-        console.log("JSON FORMAT: ",    json);
+        console.log("JSON FORMAT: ", json);
         setDetails(JSON.parse(JSON.stringify(json)));
 
         // Here function is not calling, Need to fix this.
         filterPresentCourses();
-
       } else {
         console.log("Error in Receiving Cookies.");
-
       }
-
     } catch (error) {
       // Alert.alert("Network Error: Couldn't fetch courses");
       console.log("Could not fetch Courses data in the Dashboard");
@@ -92,7 +88,6 @@ function CourseTable(): React.JSX.Element {
     fetchCourseDetails();
   }, []);
 
-  
   // just to trigger useEffect
   return <View />;
 }

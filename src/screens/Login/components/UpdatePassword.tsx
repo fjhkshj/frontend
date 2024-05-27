@@ -36,7 +36,7 @@ function UpdatePassword() {
               fontSize: 18,
               marginLeft: 5,
               marginBottom: 15,
-              color: "#000000"
+              color: "#000000",
             }}
           >
             Forgot Password
@@ -51,7 +51,7 @@ function UpdatePassword() {
               fontSize: 18,
               marginLeft: 5,
               marginBottom: 30,
-              color: "#000000"
+              color: "#000000",
             }}
           >
             Reset Password

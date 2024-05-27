@@ -14,14 +14,14 @@ function GeneralDetails(): React.JSX.Element {
   for (let i = currentYear; i >= 2016; i--) {
     ListofYears.push({
       key: `${i}-${(i + 1) % 100}`,
-      value: `${i}-${(i + 1) % 100}`
+      value: `${i}-${(i + 1) % 100}`,
     });
   }
 
   const ListofSemesters = [
     { key: "All", value: "All" },
     { key: "Monsoon", value: "Monsoon" },
-    { key: "Spring", value: "Spring" }
+    { key: "Spring", value: "Spring" },
   ];
 
   ListofYears.unshift({ key: "Select...", value: "Select..." });
@@ -40,7 +40,7 @@ function GeneralDetails(): React.JSX.Element {
             marginVertical: 10,
             fontSize: 18,
             color: "black",
-            marginLeft: ScreenWidth * 0.03
+            marginLeft: ScreenWidth * 0.03,
           }}
         >
           AcadYear :
@@ -60,7 +60,7 @@ function GeneralDetails(): React.JSX.Element {
         style={{
           flexDirection: "row",
           marginTop: 10,
-          marginLeft: ScreenWidth * 0.03
+          marginLeft: ScreenWidth * 0.03,
         }}
       >
         <Text style={{ marginVertical: 10, fontSize: 18, color: "black" }}>

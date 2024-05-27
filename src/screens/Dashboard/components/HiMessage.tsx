@@ -13,20 +13,20 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     marginRight: 40,
-    marginTop: -20
+    marginTop: -20,
   },
   image: {
     width: 150,
     height: 65,
-    resizeMode: "contain"
+    resizeMode: "contain",
   },
 
   vertical: {
     marginBottom: 10,
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
 
 function logo(): React.JSX.Element {

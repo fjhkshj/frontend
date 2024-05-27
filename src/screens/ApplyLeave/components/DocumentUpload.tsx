@@ -5,7 +5,7 @@ import {
   Image,
   SafeAreaView,
   TouchableOpacity,
-  Alert
+  Alert,
 } from "react-native";
 import DocumentPicker from "react-native-document-picker";
 import LeaveApplicationCss from "../styles/LeaveScreenStyles";
@@ -23,7 +23,7 @@ function DocumentAdd({
   pickfile1,
   pickfile2,
   file1_base64,
-  file2_base64
+  file2_base64,
 }): React.JSX.Element {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFile2, setSelectedFile2] = useState(null);
@@ -72,8 +72,8 @@ function DocumentAdd({
           DocumentPicker.types.images,
           DocumentPicker.types.docx,
           DocumentPicker.types.doc,
-          DocumentPicker.types.xls
-        ]
+          DocumentPicker.types.xls,
+        ],
       });
       // console.log(doc);
       if (fileNumber === 1) {
@@ -119,7 +119,7 @@ function DocumentAdd({
               LeaveApplicationCss.input2,
               { width: "70%" },
               { marginLeft: "5%" },
-              { alignSelf: "flex-start" }
+              { alignSelf: "flex-start" },
             ]}
           >
             <Text>{selectedFile ? selectedFile : "File Name"}</Text>
@@ -150,7 +150,7 @@ function DocumentAdd({
               LeaveApplicationCss.input2,
               { width: "70%" },
               { marginLeft: "5%" },
-              { alignSelf: "flex-start" }
+              { alignSelf: "flex-start" },
             ]}
           >
             <Text>{selectedFile2 ? selectedFile2 : "File Name"}</Text>

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Alert,
   ScrollView,
-  TextInput
+  TextInput,
 } from "react-native";
 import { Card } from "@rneui/themed";
 import { bank_details } from "../../constants/APIHandler";
@@ -34,8 +34,8 @@ const bankDetailsJSON = {
     ifscCode: null,
     bankAddress: null,
     remarks: null,
-    viewAttachment: null
-  }
+    viewAttachment: null,
+  },
 };
 
 const fieldNames: { [key: string]: string } = {
@@ -47,12 +47,12 @@ const fieldNames: { [key: string]: string } = {
   ifscCode: "IFSC Code",
   bankAddress: "Bank Address",
   remarks: "Remarks",
-  viewAttachment: "Passbook / Canceled Cheque Leaf"
+  viewAttachment: "Passbook / Canceled Cheque Leaf",
 };
 
 function BankDetails({
   _route,
-  navigation
+  navigation,
 }: types.BankDetailsProps): React.JSX.Element {
   const detailsJSON = bankDetailsJSON;
   const details = JSON.parse(JSON.stringify(detailsJSON));
@@ -67,22 +67,22 @@ function BankDetails({
 
         return;
       }
-      
+
       const response = await fetch(bank_details, {
         method: "GET",
-        headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
+        headers: { Cookie: `access_token_ims_app=${accessToken}` },
       });
-      
-      console.log('Response:', response);
-      
+
+      console.log("Response:", response);
+
       const json_response = await response.json();
-      
+
       console.log("RESPONSE JSON: ", json_response);
-      
+
       setIsFetchFine(true);
       setDetails(JSON.parse(JSON.stringify(json_response))); // Optional: Deep copy if needed
     } catch (error) {
-      console.error('Fetch Error:', error);
+      console.error("Fetch Error:", error);
       setIsFetchFine(false);
       Alert.alert("Error:", error.toString());
     }
@@ -125,7 +125,7 @@ function BankDetails({
           ) {
             Alert.alert(
               "",
-              "You are not allowed to add another record. Contact Academic office for any change in Bank Account Details."
+              "You are not allowed to add another record. Contact Academic office for any change in Bank Account Details.",
             );
           }
         }}

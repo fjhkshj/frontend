@@ -4,7 +4,7 @@ import LeaveApplicationCss from "../styles/LeaveScreenStyles";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   SelectList,
-  MultipleSelectList
+  MultipleSelectList,
 } from "react-native-dropdown-select-list"; // Assuming you have these components
 import { courserows } from "../../Dashboard/components/CourseTable"; // Assuming this is where your course data is stored
 
@@ -16,7 +16,7 @@ const redDotIcon = lightIcons.red_dot;
 function MissedExams({
   leaveforsports,
   setmissedexams,
-  setCOURSESMISSED
+  setCOURSESMISSED,
 }): React.JSX.Element {
   const [missedExams, setMissedExams] = useState("Missed Exams");
   const [missedcourses, setMissedCourses] = useState([]);
@@ -24,19 +24,19 @@ function MissedExams({
   const ListOfReasons = [
     { key: "Select...", value: "Select..." },
     { key: "Yes", value: "Yes" },
-    { key: "No", value: "No" }
+    { key: "No", value: "No" },
   ];
 
   const ReasonsforSports = [
     { key: "Select...", value: "Select..." },
     { key: "Yes", value: "Yes" },
-    { key: "No", value: "No" }
+    { key: "No", value: "No" },
   ];
 
   // const coursesList = []
   const coursesList = Object.values(courserows).map((course) => ({
     key: course.key,
-    value: course.name
+    value: course.name,
   }));
 
   useEffect(() => {

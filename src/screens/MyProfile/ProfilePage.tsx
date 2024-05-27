@@ -24,7 +24,7 @@ const profileDetailsJSON = {
     mobile: null,
     email: null,
     fatherName: null,
-    motherName: null
+    motherName: null,
   },
   address: {
     street: null,
@@ -32,8 +32,8 @@ const profileDetailsJSON = {
     city: null,
     state: null,
     country: null,
-    zipCode: null
-  }
+    zipCode: null,
+  },
 };
 
 const fieldNames: { [key: string]: { [key: string]: string } } = {
@@ -53,7 +53,7 @@ const fieldNames: { [key: string]: { [key: string]: string } } = {
     mobile: "Mobile",
     email: "Email",
     fatherName: "Father's Name",
-    motherName: "Mother's Name"
+    motherName: "Mother's Name",
   },
   address: {
     street: "Street",
@@ -61,8 +61,8 @@ const fieldNames: { [key: string]: { [key: string]: string } } = {
     city: "City",
     state: "State",
     country: "Country",
-    zipCode: "Zip Code"
-  }
+    zipCode: "Zip Code",
+  },
 };
 
 function ProfileDetails(): React.JSX.Element {
@@ -75,27 +75,25 @@ function ProfileDetails(): React.JSX.Element {
     if (accessToken) {
       await fetch(profile_details, {
         method: "GET",
-        headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
+        headers: { Cookie: `access_token_ims_app=${accessToken}` },
       })
         .then((response) => {
-          console.log('Response:', response);
+          console.log("Response:", response);
           return response.json();
         })
         .then((json) => {
-          console.log('Parsed JSON:', json);
+          console.log("Parsed JSON:", json);
           setIsFetchFine(true);
           setDetails(JSON.parse(JSON.stringify(json))); // why did this work?
         })
         .catch((error) => {
-          console.error('Fetch Error:', error);
+          console.error("Fetch Error:", error);
           setIsFetchFine(false);
           Alert.alert("Alert", "ProfileDetails: ", error.toString());
         });
-    }
-    else {
+    } else {
       console.log("Error in Receiving access Token.");
     }
-
   };
 
   useEffect(() => {
@@ -139,7 +137,7 @@ function ProfileDetails(): React.JSX.Element {
               style={{
                 ...profile.container,
                 flex: 0.55,
-                alignSelf: "flex-start"
+                alignSelf: "flex-start",
               }}
             >
               <Text style={profile.fieldHeader}>
@@ -165,7 +163,7 @@ function ProfileDetails(): React.JSX.Element {
               style={{
                 ...profile.container,
                 flex: 0.55,
-                alignSelf: "flex-start"
+                alignSelf: "flex-start",
               }}
             >
               <Text style={profile.fieldHeader}>
@@ -195,7 +193,7 @@ function ProfileDetails(): React.JSX.Element {
               style={{
                 ...profile.container,
                 flex: 0.55,
-                alignSelf: "flex-start"
+                alignSelf: "flex-start",
               }}
             >
               <Text style={profile.fieldHeader}>
@@ -221,7 +219,7 @@ function ProfileDetails(): React.JSX.Element {
               style={{
                 ...profile.container,
                 flex: 0.55,
-                alignSelf: "flex-start"
+                alignSelf: "flex-start",
               }}
             >
               <Text style={profile.fieldHeader}>
@@ -247,7 +245,7 @@ function ProfileDetails(): React.JSX.Element {
               style={{
                 ...profile.container,
                 flex: 0.55,
-                alignSelf: "flex-start"
+                alignSelf: "flex-start",
               }}
             >
               <Text style={profile.fieldHeader}>
@@ -278,7 +276,7 @@ function ProfileDetails(): React.JSX.Element {
               style={{
                 ...profile.container,
                 flex: 0.55,
-                alignSelf: "flex-start"
+                alignSelf: "flex-start",
               }}
             >
               <Text style={profile.fieldHeader}>
@@ -334,7 +332,7 @@ function ProfileDetails(): React.JSX.Element {
               style={{
                 ...profile.container,
                 flex: 0.55,
-                alignSelf: "flex-start"
+                alignSelf: "flex-start",
               }}
             >
               <Text style={profile.fieldHeader}>

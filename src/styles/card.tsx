@@ -3,14 +3,14 @@ import { StyleSheet } from "react-native";
 // temporary style
 const styles = StyleSheet.create({
   safeAreaContainer: {
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   container: {
     // flex: 1,
-    marginTop: 5
+    marginTop: 5,
   },
   fonts: {
-    marginBottom: 8
+    marginBottom: 8,
   },
   card: {
     // flexDirection: "row",
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     marginTop: 7,
     marginBottom: 10,
     borderRadius: 10,
-    padding: 0
+    padding: 0,
     // // height: 20,
     // borderColor: "#534c4c",
     // borderRadius: 6,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 10,
     padding: 0,
-    backgroundColor: "#F5F5F5"
+    backgroundColor: "#F5F5F5",
   },
   cardTextInput: {
     // fontSize: 16,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     // color: "#000000"
     color: "#534c4c",
     fontSize: 14,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   sectionHeader: {
     color: "#000000",
@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 8,
     marginLeft: 11,
-    paddingLeft: 5
+    paddingLeft: 5,
     // fontSize: 18,
     // fontWeight: 'bold',
     // color: '#000000',
-  }
+  },
 });
 
 export default styles;

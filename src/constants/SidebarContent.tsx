@@ -29,18 +29,18 @@ export const entries: Entries = {
   notification: {
     name: "Notifications",
     icon: bellIcon,
-    target: "Notifications"
+    target: "Notifications",
   },
   attendance: {
     name: "Attendance",
     icon: attendanceIcon,
-    target: "MyAttendance"
+    target: "MyAttendance",
   },
   transcript: {
     name: "Transcript",
     icon: transcriptIcon,
-    target: "MyTranscript"
+    target: "MyTranscript",
   },
   about: { name: "About", icon: aboutIcon, target: "About" },
-  logout: { name: "LogOut", icon: logoutIcon, target: "Logout" }
+  logout: { name: "LogOut", icon: logoutIcon, target: "Logout" },
 };

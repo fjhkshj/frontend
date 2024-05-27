@@ -5,31 +5,31 @@ import {
   View,
   SafeAreaView,
   Text,
-  StyleSheet
+  StyleSheet,
 } from "react-native";
 import global from "../styles/global";
 
 const styles = StyleSheet.create({
   contentContainer: {
     paddingHorizontal: 20,
-    paddingVertical: 10
+    paddingVertical: 10,
   },
   heading: {
     fontSize: 25,
     fontWeight: "bold",
     marginBottom: 10,
-    color: "black"
+    color: "black",
   },
   subHeading: {
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
-    color: "black"
+    color: "black",
   },
   description: {
     fontSize: 16,
-    marginBottom: 10
-  }
+    marginBottom: 10,
+  },
 });
 
 function About(): React.JSX.Element {

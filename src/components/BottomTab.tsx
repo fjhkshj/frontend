@@ -23,7 +23,7 @@ function BottomTab(): React.JSX.Element {
           source={image}
           resizeMode="contain"
           style={{
-            width: 25
+            width: 25,
           }}
         />
       </SafeAreaView>
@@ -33,14 +33,14 @@ function BottomTab(): React.JSX.Element {
   const getTabScreen = (
     tabName: string,
     image: ImageSourcePropType,
-    componentName: string
+    componentName: string,
   ) => {
     return (
       <Tab.Screen
         name={tabName}
         component={componentName}
         options={{
-          tabBarIcon: () => TabBarIcon(image)
+          tabBarIcon: () => TabBarIcon(image),
         }}
       />
     );
@@ -53,12 +53,12 @@ function BottomTab(): React.JSX.Element {
         tabBarInactiveTintColor: "#999999", // Change the inactive text color here
         headerShown: false,
         tabBarStyle: {
-          height: 60
+          height: 60,
         },
         tabBarLabelStyle: {
           fontWeight: "bold",
-          fontSize: 14
-        }
+          fontSize: 14,
+        },
       }}
     >
       {getTabScreen("Home", homeIcon, Dashboard)}

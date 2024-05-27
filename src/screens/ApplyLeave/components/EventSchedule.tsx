@@ -63,7 +63,7 @@ function EventSchedule(props: {
             {fromDate.toLocaleDateString("en-IN", {
               year: "numeric",
               month: "2-digit",
-              day: "2-digit"
+              day: "2-digit",
             })}
           </Text>
         </View>
@@ -93,7 +93,7 @@ function EventSchedule(props: {
             {toDate.toLocaleDateString("en-IN", {
               year: "numeric",
               month: "2-digit",
-              day: "2-digit"
+              day: "2-digit",
             })}
           </Text>
         </View>

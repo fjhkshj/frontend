@@ -2,7 +2,7 @@ import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerContentComponentProps,
-  DrawerItem
+  DrawerItem,
 } from "@react-navigation/drawer";
 import "react-native-gesture-handler";
 import CustomHeader from "./Header";
@@ -82,11 +82,11 @@ function SidebarDisplay(): React.JSX.Element {
         header: () => <CustomHeader />,
         drawerStyle: {
           backgroundColor: "#231542",
-          width: 240
+          width: 240,
         },
         headerTitleStyle: {
-          fontFamily: "Quicksand-Light"
-        }
+          fontFamily: "Quicksand-Light",
+        },
       }}
     >
       {/* just have this to make it work */}

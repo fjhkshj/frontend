@@ -13,7 +13,7 @@ function FromToDate({
   settodate,
   settotaldays,
   fromdatetext,
-  todatetext
+  todatetext,
 }): React.JSX.Element {
   const [totalDays, setTotalDays] = useState(1);
   const [mode, setMode] = useState("date");
@@ -32,7 +32,7 @@ function FromToDate({
 
   const DateCompare = () => {
     Alert.alert("Alert", "From date cannot be greater than To date", [
-      { text: "OK" }
+      { text: "OK" },
     ]);
   };
 
@@ -123,14 +123,14 @@ function FromToDate({
               LeaveApplicationCss.input,
               { width: "80%" },
               { marginLeft: "5%" },
-              { alignSelf: "flex-start" }
+              { alignSelf: "flex-start" },
             ]}
           >
             <Text>
               {fromDate.toLocaleDateString("en-IN", {
                 year: "numeric",
                 month: "2-digit",
-                day: "2-digit"
+                day: "2-digit",
               })}
             </Text>
           </View>
@@ -163,14 +163,14 @@ function FromToDate({
               LeaveApplicationCss.input,
               { width: "80%" },
               { marginLeft: "5%" },
-              { alignSelf: "flex-start" }
+              { alignSelf: "flex-start" },
             ]}
           >
             <Text>
               {toDate.toLocaleDateString("en-IN", {
                 year: "numeric",
                 month: "2-digit",
-                day: "2-digit"
+                day: "2-digit",
               })}
             </Text>
           </View>

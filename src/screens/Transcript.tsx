@@ -6,7 +6,7 @@ import {
   Dimensions,
   ScrollView,
   Alert,
-  StyleSheet
+  StyleSheet,
 } from "react-native";
 import { Button } from "@rneui/base";
 import SemesterSelector from "../components/SemesterSelector";
@@ -17,7 +17,7 @@ import { selected_year, selected_sem } from "../components/SemesterSelector";
 import {
   coursedetails,
   CourseDetails,
-  Course
+  Course,
 } from "./Dashboard/components/CourseTable";
 
 interface SemesterData {
@@ -39,15 +39,15 @@ const styles = StyleSheet.create({
     color: "#7a7a7a",
     marginTop: 20,
     fontSize: 20,
-    textAlign: "center"
+    textAlign: "center",
   },
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    padding: 15
+    padding: 15,
   },
   row: {
-    flexDirection: "row"
+    flexDirection: "row",
   },
   box: {
     borderRadius: 10,
@@ -56,24 +56,24 @@ const styles = StyleSheet.create({
     padding: 40,
     paddingTop: 0,
     paddingBottom: 20,
-    marginBottom: 20
+    marginBottom: 20,
   },
   cell: {
     borderColor: "black",
     padding: 10,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   table: {
     borderColor: "black",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   headingRow: {
-    backgroundColor: "lightgray"
+    backgroundColor: "lightgray",
   },
   headingText: {
     fontWeight: "bold",
-    fontSize: 11
+    fontSize: 11,
   },
   input3: {
     height: 100,
@@ -85,8 +85,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     textAlignVertical: "top",
     flexWrap: "wrap",
-    borderRadius: 6
-  }
+    borderRadius: 6,
+  },
 });
 
 function Transcript(): React.JSX.Element {
@@ -101,24 +101,22 @@ function Transcript(): React.JSX.Element {
       const url = transcript_details;
       const accessToken = getAccessToken();
       console.log("ACCESS TOKEN FOR TRANSCRIPT: ", accessToken);
-      const response = await fetch(url,
-        {
-          method: "GET",
-          headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
-        }
-      );
+      const response = await fetch(url, {
+        method: "GET",
+        headers: { Cookie: `access_token_ims_app=${accessToken}` },
+      });
       console.log("RESPONSE: ", response);
       if (!response.ok) {
-        console.log("Error in fetching transcript details, please try again later.");
+        console.log(
+          "Error in fetching transcript details, please try again later.",
+        );
         setLoadingText("Error in Fetching Transcript, Please try again later");
-      }
-      else {
+      } else {
         console.log("RESPONSE: ", response);
         const responseData = await response.json();
         console.log("RESPONSE JSON From BackEnd: ", responseData);
         setGpaData(responseData.semesters);
       }
-
     } catch (e: unknown) {
       setLoadingText("Error in Fetching Transcript, Please try again later");
       // Alert.alert("GPAData:", e as string);
@@ -165,7 +163,7 @@ function Transcript(): React.JSX.Element {
             year: selected_year,
             courses: [course],
             CGPA: 0,
-            SGPA: 0
+            SGPA: 0,
           };
         } else {
           newSemData[Semester].courses.push(course);
@@ -186,7 +184,7 @@ function Transcript(): React.JSX.Element {
             year: selected_year,
             courses: [],
             CGPA: cgpa,
-            SGPA: sgpa
+            SGPA: sgpa,
           };
         } else {
           newSemData[semEntry].CGPA = cgpa;
@@ -222,7 +220,7 @@ function Transcript(): React.JSX.Element {
         key={index}
         style={[
           styles.cell,
-          { width: (screenWidth - 30) * columnFractions[index] }
+          { width: (screenWidth - 30) * columnFractions[index] },
         ]}
       >
         <Text style={styles.headingText}>{heading}</Text>
@@ -230,7 +228,7 @@ function Transcript(): React.JSX.Element {
     ));
 
     cells.push(
-      <View style={[styles.row, styles.headingRow]}>{headingRowCells}</View>
+      <View style={[styles.row, styles.headingRow]}>{headingRowCells}</View>,
     );
 
     // render rows
@@ -240,7 +238,7 @@ function Transcript(): React.JSX.Element {
           key={columnIndex}
           style={[
             styles.cell,
-            { width: (screenWidth - 30) * columnFractions[columnIndex] }
+            { width: (screenWidth - 30) * columnFractions[columnIndex] },
           ]}
         >
           <Text>{course[heading]}</Text>
@@ -250,7 +248,7 @@ function Transcript(): React.JSX.Element {
       cells.push(
         <View key={index} style={styles.row}>
           {rowCells}
-        </View>
+        </View>,
       );
     });
     return cells;
@@ -294,7 +292,7 @@ function Transcript(): React.JSX.Element {
             fontWeight: "bold",
             fontSize: 20,
             marginVertical: 10,
-            marginLeft: screenWidth * 0.03
+            marginLeft: screenWidth * 0.03,
           }}
         >
           {semester + " " + year}
@@ -316,7 +314,7 @@ function Transcript(): React.JSX.Element {
           justifyContent: "space-between",
           paddingHorizontal: screenWidth * 0.05,
           marginTop: 10,
-          marginVertical: 20
+          marginVertical: 20,
         }}
         key={1}
       >
@@ -332,9 +330,10 @@ function Transcript(): React.JSX.Element {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      
       <Selector />
-      <Text style={{ fontSize: 20, textAlign: 'center', color: 'black'}}>{loadingText}</Text>
+      <Text style={{ fontSize: 20, textAlign: "center", color: "black" }}>
+        {loadingText}
+      </Text>
       {Object.entries(semesterData).map(
         ([semester, { year, courses, CGPA, SGPA }], index) => (
           <View key={index}>
@@ -344,7 +343,7 @@ function Transcript(): React.JSX.Element {
             </View>
             <GPAInfo sgpa={SGPA} cgpa={CGPA} />
           </View>
-        )
+        ),
       )}
       <EndOfRecord />
     </ScrollView>

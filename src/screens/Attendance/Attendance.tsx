@@ -6,7 +6,7 @@ import {
   SafeAreaView,
   Text,
   StyleSheet,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import { coursedetails } from "../Dashboard/components/CourseTable";
 import { CourseDetails } from "../Dashboard/components/CourseTable";
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     color: "#7a7a7a",
     marginTop: 20,
     fontSize: 20,
-    textAlign: "center"
+    textAlign: "center",
   },
   box: {
     borderRadius: 10,
@@ -44,25 +44,25 @@ const styles = StyleSheet.create({
     padding: 40,
     paddingTop: 0,
     paddingBottom: 20,
-    marginBottom: 20
+    marginBottom: 20,
   },
   box2: {
     borderRadius: 10,
     backgroundColor: "#FAFAFA",
-    padding: 10
+    padding: 10,
   },
   text: {
     fontWeight: "bold",
     fontSize: 19,
     color: "#000000",
     margin: 10,
-    marginTop: 10
-  }
+    marginTop: 10,
+  },
 });
 
 function ViewAttendance({
   _route,
-  navigation
+  navigation,
 }: types.MyAttendanceProps): React.JSX.Element {
   // code for SelectionList
 

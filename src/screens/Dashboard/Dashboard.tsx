@@ -7,7 +7,7 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
-  ImageSourcePropType
+  ImageSourcePropType,
 } from "react-native";
 import HIMESSAGE from "./components/HiMessage";
 import CourseTable from "./components/CourseTable";
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    padding: 15
+    padding: 15,
   },
   icon_container: {
     marginBottom: 10,
@@ -29,26 +29,26 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "space-evenly",
     backgroundColor: "#FAFAFA",
-    paddingBottom: 20
+    paddingBottom: 20,
   },
   heading: {
     marginTop: 10,
     marginBottom: 10,
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
   },
 
   parent_section: {
     width: 37,
     height: 37,
     marginLeft: 5,
-    marginBottom: 0
+    marginBottom: 0,
   },
 
   parent_title: {
     fontSize: 24,
     marginLeft: 10,
-    color: "#000000" // TODO: use theme wise color
+    color: "#000000", // TODO: use theme wise color
   },
 
   children_section: {
@@ -58,13 +58,13 @@ const styles = StyleSheet.create({
     width: 35,
     height: 35,
     overflow: "hidden",
-    marginLeft: 0
-  }
+    marginLeft: 0,
+  },
 });
 
 function Dashboard({
   _route,
-  navigation
+  navigation,
 }: types.DashboardScreenProps): React.JSX.Element {
   const renderHeading = (name: string, icon: ImageSourcePropType) => {
     return (
@@ -84,7 +84,7 @@ function Dashboard({
   const renderRow = (
     name: string,
     icon: ImageSourcePropType,
-    target: string
+    target: string,
   ) => {
     return (
       <TouchableOpacity
@@ -116,7 +116,7 @@ function Dashboard({
       <SafeAreaView key={`chunk-${chunkIndex}`} style={styles.icon_container}>
         {chunk.map(
           ([name, { icon, target, access }]) =>
-            access.includes(userType) && renderRow(name, icon, target)
+            access.includes(userType) && renderRow(name, icon, target),
         )}
       </SafeAreaView>
     ));
@@ -128,7 +128,7 @@ function Dashboard({
         <HIMESSAGE />
         {Object.entries(entries).map(([heading, { icon, itemList }]) => [
           renderHeading(heading, icon),
-          renderRows(itemList)
+          renderRows(itemList),
         ])}
       </ScrollView>
       <CourseTable />

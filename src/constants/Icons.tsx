@@ -19,7 +19,7 @@ export const dashboardIcons = {
 
     profile: require("../assets/icons/profile.png"),
     features: require("../assets/icons/features.png"),
-    courses: require("../assets/icons/courses.png")
+    courses: require("../assets/icons/courses.png"),
   },
   dark: {
     home: require("../assets/icons/home_dark.png"),
@@ -35,8 +35,8 @@ export const dashboardIcons = {
     courses: require("../assets/icons/courses_dark.png"),
     status: require("../assets/icons/status_dark.png"),
     attendance: require("../assets/icons/attendance_dark.png"),
-    transcript: require("../assets/icons/transcript_dark.png")
-  }
+    transcript: require("../assets/icons/transcript_dark.png"),
+  },
 };
 
 export const sidebarIcons = dashboardIcons.light;
@@ -54,7 +54,7 @@ export const otherIcons = {
     red_dot: require("../assets/icons/red_dot.png"),
 
     forgot: require("../assets/icons/forgot.png"),
-    reset: require("../assets/icons/reset.png")
+    reset: require("../assets/icons/reset.png"),
   },
   dark: {
     calendar: require("../assets/icons/calendar_dark.png"),
@@ -68,6 +68,6 @@ export const otherIcons = {
     reset: require("../assets/icons/reset_dark.png"),
 
     three_lines: require("../assets/icons/3_lines.png"),
-    logout: require("../assets/icons/logout_dark.png")
-  }
+    logout: require("../assets/icons/logout_dark.png"),
+  },
 };

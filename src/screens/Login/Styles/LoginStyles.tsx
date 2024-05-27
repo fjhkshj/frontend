@@ -5,18 +5,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    marginBottom: 30
+    marginBottom: 30,
   },
   image: {
     width: 240,
     height: 120,
-    resizeMode: "cover"
+    resizeMode: "cover",
   },
   text: {
     justifyContent: "center",
     alignItems: "center",
     fontSize: 5,
-    marginBottom: 15
+    marginBottom: 15,
   },
   vertical: {
     marginBottom: 30,
@@ -25,13 +25,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginLeft: 20,
     marginRight: 20,
-    fontSize: 20
+    fontSize: 20,
   },
   image2: {
     width: 20,
     height: 20,
     resizeMode: "cover",
-    marginTop: 2
+    marginTop: 2,
   },
   input: {
     height: 40,
@@ -40,20 +40,20 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     marginTop: 20,
-    width: 340
+    width: 340,
   },
   container2: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    padding: 15
+    padding: 15,
   },
   indicator: {
     flex: 1,
     backgroundColor: "#F5F5F5",
     paddingTop: StatusBar.currentHeight,
     justifyContent: "center",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });
 
 export default styles;

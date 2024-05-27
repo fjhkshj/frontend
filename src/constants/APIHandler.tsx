@@ -23,7 +23,16 @@ const apply_leave = domain + "/data/new_leave_request";
 const course_attendance = domain + "/data/attendance/";
 
 export {
-    domain, auth_route, user_details, profile_details,
-    bank_details, update_bank_details, transcript_details, course_attendance,
-    courses_details, attendance_details, past_leave_status, apply_leave
+  domain,
+  auth_route,
+  user_details,
+  profile_details,
+  bank_details,
+  update_bank_details,
+  transcript_details,
+  course_attendance,
+  courses_details,
+  attendance_details,
+  past_leave_status,
+  apply_leave,
 };

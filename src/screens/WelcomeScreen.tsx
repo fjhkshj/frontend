@@ -13,7 +13,7 @@ const iiitIcon = lightIcons.iiit_big;
 
 function Welcome({
   _route,
-  navigation
+  navigation,
 }: types.WelcomeScreenProps): React.JSX.Element {
   async function askNotificationPermission() {
     // Request permissions (required for iOS) of Notifications
@@ -32,7 +32,7 @@ function Welcome({
           alignItems: "center",
           justifyContent: "center",
           alignContent: "center",
-          paddingVertical: 30
+          paddingVertical: 30,
         }}
       >
         <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>
@@ -45,7 +45,7 @@ function Welcome({
           width: "70%",
           resizeMode: "stretch",
           height: "30%",
-          alignSelf: "center"
+          alignSelf: "center",
         }}
       />
       <View
@@ -53,7 +53,7 @@ function Welcome({
           alignContent: "center",
           justifyContent: "center",
           alignItems: "center",
-          paddingVertical: 60
+          paddingVertical: 60,
         }}
       >
         <Button

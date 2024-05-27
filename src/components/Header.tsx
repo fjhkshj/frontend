@@ -17,7 +17,7 @@ const CustomHeader = () => {
         flexDirection: "row",
         alignItems: "center",
         backgroundColor: "#231542",
-        padding: 10
+        padding: 10,
       }}
     >
       <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
@@ -32,7 +32,7 @@ const CustomHeader = () => {
           fontSize: 18,
           color: "#ffffff",
           fontWeight: "bold",
-          marginLeft: 80
+          marginLeft: 80,
         }}
       >
         IMS - IIIT Hyderabad

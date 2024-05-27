@@ -1,10 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  SafeAreaView,
-  View,
-  Text,
-  ActivityIndicator
-} from "react-native";
+import { SafeAreaView, View, Text, ActivityIndicator } from "react-native";
 import { Button } from "@rneui/base";
 import * as types from "../../custom-types";
 
@@ -20,7 +15,7 @@ import { askFILEACCESSPERMISSION } from "../../device_permissions/FilePermission
 
 function Login({
   _route,
-  navigation
+  navigation,
 }: types.LoginScreenProps): React.JSX.Element {
   const [Email, onChangeEmail] = React.useState("");
   const [_Password, onChangePassword] = React.useState("");
@@ -32,7 +27,12 @@ function Login({
       setErrorText("");
       setIsLoading(true);
       console.log("Checking Authentication...");
-      const auth_status = await authenticate_user(Email, _Password, setErrorText, setIsLoading);
+      const auth_status = await authenticate_user(
+        Email,
+        _Password,
+        setErrorText,
+        setIsLoading,
+      );
       if (auth_status === true) {
         // After Successful Authentication, Get User Details
         setIsLoading(true);
@@ -41,33 +41,29 @@ function Login({
           console.log("Getting User Details...");
           const user_details_status = await get_user_details();
           if (user_details_status == true) {
-            setErrorText("User Details Fetched Success. Redirecting to Dashboard")
+            setErrorText(
+              "User Details Fetched Success. Redirecting to Dashboard",
+            );
             console.log("Recieved User Details Successfully...");
             navigation.navigate("SidebarDisplay");
+          } else {
+            setErrorText(
+              "Auth, Cookie assign succcess,  Error In Getting User Details...",
+            );
           }
-          else{
-            setErrorText("Auth, Cookie assign succcess,  Error In Getting User Details...");
-          }
-
-        }
-        catch (err) {
-          setErrorText("Auth, Cookie assign succes, Error in getting User Details, API error.");
+        } catch (err) {
+          setErrorText(
+            "Auth, Cookie assign succes, Error in getting User Details, API error.",
+          );
           console.log("ERROR In Getting User Details");
         }
-      }
-      else {
+      } else {
         console.log("Invalid Username or password");
       }
-    }
-    catch (err) {
+    } catch (err) {
       console.log("ERROR IN AUTHENTICATION");
     }
-
-
-
   };
-
-
 
   useEffect(() => {
     // askNotificationPermission(); // Call the function when the component mounts
@@ -114,4 +110,3 @@ function Login({
 }
 
 export default Login;
-

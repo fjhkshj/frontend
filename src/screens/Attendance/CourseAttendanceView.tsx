@@ -6,7 +6,7 @@ import {
   View,
   SafeAreaView,
   Text,
-  StyleSheet
+  StyleSheet,
 } from "react-native";
 import global from "../../styles/global";
 import { courseCode, courseName } from "./Attendance";
@@ -31,26 +31,26 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#7a7a7a",
     textAlign: "center",
-    fontSize: 25
+    fontSize: 25,
   },
   row: {
     flexDirection: "row",
-    marginBottom: 10
+    marginBottom: 10,
   },
   date: {
     flex: 4,
-    marginLeft: 40
+    marginLeft: 40,
   },
   dateText: {
     fontSize: 18,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   marked: {
     flex: 1,
-    paddingRight: 40
+    paddingRight: 40,
   },
   markedText: {
-    fontSize: 18
+    fontSize: 18,
   },
   headRow: {
     marginTop: 30,
@@ -60,21 +60,21 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: "black",
     borderBottomWidth: 1,
-    borderBottomColor: "black"
+    borderBottomColor: "black",
   },
   head: {
-    flex: 2
+    flex: 2,
   },
   headText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "black"
-  }
+    color: "black",
+  },
 });
 
 function CourseAttendanceView({
   _route,
-  navigation
+  navigation,
 }: types.CourseAttendanceProps): React.JSX.Element {
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -99,12 +99,10 @@ function CourseAttendanceView({
           reject(new Error("Request timed out"));
         }, 10000);
       });
-      const responsePromise = fetch(attendance_details, 
-        {
-          method: "GET",
-          headers: { 'Cookie': `access_token_ims_app=${accessToken}` }
-        }
-      );
+      const responsePromise = fetch(attendance_details, {
+        method: "GET",
+        headers: { Cookie: `access_token_ims_app=${accessToken}` },
+      });
       const response = await Promise.race([responsePromise, timeoutPromise]);
       const json = await (response as Response).json();
       console.log(json);

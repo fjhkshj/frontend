@@ -42,7 +42,7 @@ function Navigation(): React.JSX.Element {
           headerBackImageSource: backIcon,
           headerTitleAlign: "center",
           headerShadowVisible: false,
-          headerTitleStyle: { fontSize: 16, fontWeight: "bold" }
+          headerTitleStyle: { fontSize: 16, fontWeight: "bold" },
         }}
       >
         <Stack.Screen
@@ -71,7 +71,7 @@ function Navigation(): React.JSX.Element {
           options={{
             headerShown: false,
             headerBackVisible: false,
-            headerBackTitleVisible: false
+            headerBackTitleVisible: false,
           }}
         />
         <Stack.Screen
@@ -85,7 +85,7 @@ function Navigation(): React.JSX.Element {
           options={{
             headerShown: false,
             headerBackVisible: false,
-            headerBackTitleVisible: false
+            headerBackTitleVisible: false,
           }}
         />
         <Stack.Screen name="EditBankDetails" component={EditBankDetails} />

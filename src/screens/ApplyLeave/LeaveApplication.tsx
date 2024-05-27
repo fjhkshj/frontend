@@ -33,10 +33,6 @@ function LeaveApplication(): React.JSX.Element {
   const [missedexams, setmissedexams] = useState(null);
   const [listOfCoursesMissed, setLISTOFCOURSESMISSED] = useState([]);
 
-
-
-
-
   useEffect(() => {
     if (reasonforleave === "Sickness") {
       setEventCategory(null);
@@ -71,45 +67,45 @@ function LeaveApplication(): React.JSX.Element {
       return Alert.alert(
         "Alert",
         "Please select To Date greater than From Date.",
-        [{ text: "OK" }]
+        [{ text: "OK" }],
       );
     } else if (file1 == null && file2 == null) {
       return Alert.alert("Alert", "Please Upload the Relevant Document.", [
-        { text: "OK" }
+        { text: "OK" },
       ]);
     } else if (!justificationforleave) {
       return Alert.alert(
         "Alert",
         "Please Fill the Justification for the leave application.",
-        [{ text: "OK" }]
+        [{ text: "OK" }],
       );
     } else if (!sportsleave || sportsleave == "Select...") {
       return Alert.alert(
         "Alert",
         "Please Choose Whether the Leave is for Sports/Yoga or Not.",
-        [{ text: "OK" }]
+        [{ text: "OK" }],
       );
     } else if (!missedexams) {
       return Alert.alert(
         "Alert",
         "Please Fill whether the exams missed or not.",
-        [{ text: "OK" }]
+        [{ text: "OK" }],
       );
     } else if (!reasonforleave) {
       return Alert.alert("Alert", "Please Choose the reason for Leave", [
-        { text: "OK" }
+        { text: "OK" },
       ]);
     } else if (reasonforleave == "Sickness" && patientCategory == null) {
       return Alert.alert("Alert", "Please Choose the Patient Category", [
-        { text: "OK" }
+        { text: "OK" },
       ]);
     } else if (reasonforleave == "Sickness" && doctorCategory == null) {
       return Alert.alert("Alert", "Please Choose the Doctor Category", [
-        { text: "OK" }
+        { text: "OK" },
       ]);
     } else if (reasonforleave == "Technical Event" && EventCategory == null) {
       return Alert.alert("Alert", "Please Choose the Event Type", [
-        { text: "OK" }
+        { text: "OK" },
       ]);
     } else if (
       reasonforleave == "Technical Event" &&
@@ -119,7 +115,7 @@ function LeaveApplication(): React.JSX.Element {
       return Alert.alert(
         "Alert",
         "Please Choose if you are presenting paper or not",
-        [{ text: "OK" }]
+        [{ text: "OK" }],
       );
     } else if (reasonforleave == "Technical Event" && url == null) {
       return Alert.alert("Alert", "Please enter the URL", [{ text: "OK" }]);
@@ -127,7 +123,7 @@ function LeaveApplication(): React.JSX.Element {
       return Alert.alert("Alert", "Are you sure you want to Submit?", [
         {
           text: "Yes",
-           // Hello world base 64 code for attachment 1, but not selected file, Selected file base64 code is giving error we need to fix this. 
+          // Hello world base 64 code for attachment 1, but not selected file, Selected file base64 code is giving error we need to fix this.
           onPress: () => {
             const json_to_send = {
               rollNumber: rollno,
@@ -149,28 +145,28 @@ function LeaveApplication(): React.JSX.Element {
               remarks: remarks,
               applicationDate: todayDate,
               attachment1: "SGVsbG8sIFdvcmxkIQ==",
-              attachment2: file2_base64
+              attachment2: file2_base64,
             };
 
             postLeaveToServer(json_to_send)
-            .then(status_of_request => {
-              if (status_of_request) {
-                Alert.alert("Alert", "Submitted Successfully");
-                navigation.navigate("MyLeaves");;
-              } else {
-                Alert.alert("Error in sending the Request");
-              }
-            })
-            .catch(error => {
-              console.error('Error:', error);
-              Alert.alert("Error in sending the Request.");
-            });
-          }
+              .then((status_of_request) => {
+                if (status_of_request) {
+                  Alert.alert("Alert", "Submitted Successfully");
+                  navigation.navigate("MyLeaves");
+                } else {
+                  Alert.alert("Error in sending the Request");
+                }
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+                Alert.alert("Error in sending the Request.");
+              });
+          },
         },
 
         {
-          text: "No"
-        }
+          text: "No",
+        },
       ]);
     }
   };
