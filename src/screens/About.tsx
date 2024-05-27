@@ -57,7 +57,7 @@ function About(): React.JSX.Element {
         <Text style={{ fontWeight: "bold" }}>Contribute / Report Issues: </Text>
         <TouchableOpacity
           onPress={() => {
-            Linking.openURL("https://github.com/IMS-IIITH/ims-mobile-app");
+            Linking.openURL("https://github.com/IMS-IIITH");
           }}
         >
           <Text>Github</Text>
