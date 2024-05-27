@@ -1,4 +1,8 @@
-const domain = "https://ims-app.iiit.ac.in";
+import {
+  DOMAIN
+} from "@env";
+
+const domain = DOMAIN
 
 const auth_route = domain + "/user/login";
 

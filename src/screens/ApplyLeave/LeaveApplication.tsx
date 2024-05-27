@@ -144,7 +144,7 @@ function LeaveApplication(): React.JSX.Element {
               semesterCourses: listOfCoursesMissed,
               remarks: remarks,
               applicationDate: todayDate,
-              attachment1: "SGVsbG8sIFdvcmxkIQ==",
+              attachment1: file1_base64,
               attachment2: file2_base64,
             };
 
