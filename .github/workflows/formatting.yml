@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - main
 
 jobs:
   formatting:
@@ -22,7 +23,7 @@ jobs:
           npm install --global prettier
 
       - name: Format with Prettier
-        run: prettier --write "**/*.{js,jsx,md,mdx,css,yaml}"
+        run: prettier --write "**/*.{js,jsx,ts,tsx,md,mdx,css,yaml,json}"
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
