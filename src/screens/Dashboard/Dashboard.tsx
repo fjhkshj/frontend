@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback} from "react";
 import {
   SafeAreaView,
   View,
@@ -8,9 +8,11 @@ import {
   TouchableOpacity,
   ScrollView,
   ImageSourcePropType,
+  BackHandler,
 } from "react-native";
 import HIMESSAGE from "./components/HiMessage";
 import CourseTable from "./components/CourseTable";
+import { useFocusEffect } from "@react-navigation/native";
 import { userType } from "../../backend_requests/UserDetails";
 
 import * as types from "../../custom-types";
@@ -66,6 +68,25 @@ function Dashboard({
   _route,
   navigation,
 }: types.DashboardScreenProps): React.JSX.Element {
+
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        BackHandler.exitApp();
+        return true; // Prevent default back button behavior
+      };
+
+      const subscription = BackHandler.addEventListener(
+        "hardwareBackPress",
+        onBackPress
+      );
+
+      return () => subscription.remove();
+    }, [])
+  );
+
+
+
   const renderHeading = (name: string, icon: ImageSourcePropType) => {
     return (
       <SafeAreaView style={styles.heading} key={name}>
