@@ -68,7 +68,7 @@ export const authenticate_user = async (
     }
   } catch (error) {
     setIsError(false);
-    setErrorText("Please check your Network or VPN connection");
+    setErrorText("Please check your Network Connection");
     console.log("Failed in Authentication Network request failed ", error);
     return false;
   }
