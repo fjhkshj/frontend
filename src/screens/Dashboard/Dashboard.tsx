@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, { useCallback } from "react";
 import {
   SafeAreaView,
   View,
@@ -68,7 +68,6 @@ function Dashboard({
   _route,
   navigation,
 }: types.DashboardScreenProps): React.JSX.Element {
-
   useFocusEffect(
     useCallback(() => {
       const onBackPress = () => {
@@ -78,14 +77,12 @@ function Dashboard({
 
       const subscription = BackHandler.addEventListener(
         "hardwareBackPress",
-        onBackPress
+        onBackPress,
       );
 
       return () => subscription.remove();
-    }, [])
+    }, []),
   );
-
-
 
   const renderHeading = (name: string, icon: ImageSourcePropType) => {
     return (
