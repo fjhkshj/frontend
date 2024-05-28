@@ -11,10 +11,10 @@ function LogOut() {
   const clearCookies = () => {
     CookieManager.clearAll()
       .then((success) => {
-        console.log('CookieManager.clearAll =>', success);
+        console.log("CookieManager.clearAll =>", success);
       })
       .catch((error) => {
-        console.error('Error clearing cookies:', error);
+        console.error("Error clearing cookies:", error);
       });
   };
 
@@ -25,7 +25,9 @@ function LogOut() {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text style={{ color: "black", margin: 10, fontSize: 20, marginBottom: 20 }}>
+      <Text
+        style={{ color: "black", margin: 10, fontSize: 20, marginBottom: 20 }}
+      >
         Are you sure you want to Log Out?
       </Text>
       <Button
