@@ -48,12 +48,12 @@ function Login({
             navigation.navigate("SidebarDisplay");
           } else {
             setErrorText(
-              "Auth, Cookie assign succcess,  Error In Getting User Details...",
+              "Authentication, Cookie assign succcess,  Error In Getting User Details..., Please Login again",
             );
           }
         } catch (err) {
           setErrorText(
-            "Auth, Cookie assign succes, Error in getting User Details, API error.",
+            "Auth, Cookie assign succes, Error in getting User Details, Please Login in again.",
           );
           console.log("ERROR In Getting User Details");
         }
